@@ -2460,7 +2460,7 @@ const updatingChart = new Chart(ctx3, {
   }
     });
 
-
+//setTimeout(()=>
 fetch('https://canvasjs.com/services/data/datapoints.php')
 .then(res =>{
   console.log("Resolved", res)
@@ -2469,13 +2469,15 @@ fetch('https://canvasjs.com/services/data/datapoints.php')
 .then(data=> {
   for (let x =0; x<data.length; x++){
     updatingChartData.datasets[0].data.push({x: data[x][0], y: data[x][1]})
-  
+    
   }
+  updatingChart.update()
 })
 
 .catch(e =>{
   console.log("error", e)
 })
+//, 1000)
   </script>
 </body>
 
