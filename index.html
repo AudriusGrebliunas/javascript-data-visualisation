@@ -665,6 +665,10 @@
 
           <h1 id="firstHeading" class="firstHeading">Archive:Crime statistics </h1>
 
+          <div>
+            <canvas id="myChart3"></canvas>
+          </div>
+
           
 
           <div id="bodyContent" class="bodyContent">
@@ -2422,54 +2426,30 @@
       updateDataSet2()
     }
 
-let amougus;
 
 
 
 // Use the Fetch API to make the AJAX request
 
 //setInterval( ()=>
-fetch('https://canvasjs.com/services/data/datapoints.php')
-.then(res =>{
-  console.log("Resolved", res)
-  return res.json();
-})
-.then(data=> {
-  
-})
 
-.catch(e =>{
-  console.log("error", e)
-})
 
 //,10000000)
 
 const ctx3 = document.getElementById('myChart3');
 
 
-const data = {
+let updatingChartData = {
   datasets: [{
     label: 'Scatter Dataset',
-    data: [{
-      x: -10,
-      y: 0
-    }, {
-      x: 0,
-      y: 10
-    }, {
-      x: 10,
-      y: 5
-    }, {
-      x: 0.5,
-      y: 5.5
-    }],
+    data: [],
     backgroundColor: 'rgb(255, 99, 132)'
   }],
 };
 
 const updatingChart = new Chart(ctx3, {
   type: 'scatter',
-  data: data,
+  data: updatingChartData,
   options: {
     scales: {
       x: {
@@ -2479,6 +2459,27 @@ const updatingChart = new Chart(ctx3, {
     }
   }
     });
+
+setInterval(()=>
+fetch('https://canvasjs.com/services/data/datapoints.php')
+.then(res =>{
+  console.log("Resolved", res)
+  return res.json();
+})
+.then(data=> {
+  updatingChartData.datasets[0].data = []
+  for (let x =0; x<data.length; x++){
+    
+    updatingChartData.datasets[0].data.push({x: data[x][0], y: data[x][1]})
+    
+  }
+  updatingChart.update()
+})
+
+.catch(e =>{
+  console.log("error", e)
+})
+, 1000)
   </script>
 </body>
 
