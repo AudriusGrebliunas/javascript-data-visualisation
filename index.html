@@ -2460,7 +2460,7 @@ const updatingChart = new Chart(ctx3, {
   }
     });
 
-setTimeout(()=>
+setInterval(()=>
 fetch('https://canvasjs.com/services/data/datapoints.php')
 .then(res =>{
   console.log("Resolved", res)
