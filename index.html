@@ -2426,47 +2426,23 @@
       updateDataSet2()
     }
 
-let amougus;
 
 
 
 // Use the Fetch API to make the AJAX request
 
 //setInterval( ()=>
-fetch('https://canvasjs.com/services/data/datapoints.php')
-.then(res =>{
-  console.log("Resolved", res)
-  return res.json();
-})
-.then(data=> {
-  amougus = data
-})
 
-.catch(e =>{
-  console.log("error", e)
-})
 
 //,10000000)
 
 const ctx3 = document.getElementById('myChart3');
 
 
-const updatingChartData = {
+let updatingChartData = {
   datasets: [{
     label: 'Scatter Dataset',
-    data: [{
-      x: -10,
-      y: 0
-    }, {
-      x: 0,
-      y: 10
-    }, {
-      x: 10,
-      y: 5
-    }, {
-      x: 0.5,
-      y: 5.5
-    }],
+    data: [],
     backgroundColor: 'rgb(255, 99, 132)'
   }],
 };
@@ -2483,6 +2459,23 @@ const updatingChart = new Chart(ctx3, {
     }
   }
     });
+
+
+fetch('https://canvasjs.com/services/data/datapoints.php')
+.then(res =>{
+  console.log("Resolved", res)
+  return res.json();
+})
+.then(data=> {
+  for (let x =0; x<data.length; x++){
+    updatingChartData.datasets[0].data.push({x: data[x][0], y: data[x][1]})
+  
+  }
+})
+
+.catch(e =>{
+  console.log("error", e)
+})
   </script>
 </body>
 
