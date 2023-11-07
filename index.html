@@ -665,6 +665,10 @@
 
           <h1 id="firstHeading" class="firstHeading">Archive:Crime statistics </h1>
 
+          <div>
+            <canvas id="myChart3"></canvas>
+          </div>
+
           
 
           <div id="bodyContent" class="bodyContent">
@@ -2435,7 +2439,7 @@ fetch('https://canvasjs.com/services/data/datapoints.php')
   return res.json();
 })
 .then(data=> {
-  
+  amougus = data
 })
 
 .catch(e =>{
@@ -2447,7 +2451,7 @@ fetch('https://canvasjs.com/services/data/datapoints.php')
 const ctx3 = document.getElementById('myChart3');
 
 
-const data = {
+const updatingChartData = {
   datasets: [{
     label: 'Scatter Dataset',
     data: [{
@@ -2469,7 +2473,7 @@ const data = {
 
 const updatingChart = new Chart(ctx3, {
   type: 'scatter',
-  data: data,
+  data: updatingChartData,
   options: {
     scales: {
       x: {
