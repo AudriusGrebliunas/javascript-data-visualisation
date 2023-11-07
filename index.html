@@ -2422,34 +2422,27 @@
       updateDataSet2()
     }
 
+let amougus;
 
-    // Define an empty array to store the JSON data
-var jsonDataArray = [];
 
-// Specify the URL of the JSON data
-var url = 'https://canvasjs.com/services/data/datapoints.php';
 
 // Use the Fetch API to make the AJAX request
-fetch(url)
-  .then(function(response) {
-    // Check if the response status is OK (200)
-    if (response.status === 200) {
-      // Parse the JSON response
-      return response.json();
-    } else {
-      throw new Error('Failed to retrieve JSON data');
-    }
-  })
-  .then(function(data) {
-    // Data is the parsed JSON, you can insert it into the array
-    jsonDataArray.push(data);
 
-    // You can do more processing with the data or array here
-  })
-  .catch(function(error) {
-    console.error(error);
-  });
+//setInterval( ()=>
+fetch('https://canvasjs.com/services/data/datapoints.php')
+.then(res =>{
+  console.log("Resolved", res)
+  return res.json();
+})
+.then(data=> {
+  
+})
 
+.catch(e =>{
+  console.log("error", e)
+})
+
+//,10000000)
 
 
   </script>
