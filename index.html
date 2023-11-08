@@ -862,8 +862,8 @@
                   recorded by the police</span>
               </h3>
 
-              <div>
-                <canvas id="myChart"></canvas>
+              <div  style="width: 800px; height: 1000px;">
+                <canvas id="myChart" style="width: 100%; height: 100%;"></canvas>
               </div>
 
               <table cellspacing="0" cellpadding="0" id="table1">
@@ -1579,7 +1579,7 @@
               </h4>
 
               <div>
-                <canvas id="myChart2"></canvas>
+                <canvas id="myChart2" style="width: 800px; height: 800px;"></canvas>
               </div>
 
 
@@ -2403,7 +2403,17 @@
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            ticks: {
+              padding: 0
+            },
+            max: 400
+          },
+          x:{
+            max: 400,
+            ticks: {
+              padding: 0
+            }
           }
         }
       }
