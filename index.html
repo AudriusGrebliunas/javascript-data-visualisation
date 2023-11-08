@@ -2363,6 +2363,8 @@
       updateDataSet()
     }
 
+    crimeChart.update()
+
 
 
     //////////////////
@@ -2407,10 +2409,10 @@
       }
     });
     
-    let index2 = 2
+    let index2 = 1
 
     function updateDataSet2(){
-      let row = document.querySelector(`#table2 tr:nth-child(${index2})`).cells
+      let row = document.querySelector(`#table2 tbody tr:nth-child(${index2})`).cells
       dataSets.label = row[1].innerText
       let crimeNumbers = [];
       for (let x = 2; x < row.length; x++) {
@@ -2426,6 +2428,7 @@
       updateDataSet2()
     }
 
+    homicideChart.update()
 
 
 
